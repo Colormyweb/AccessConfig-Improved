@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test AccessConfig</title>
+    <script src="js/src/accessconfig.js"></script>
+    <style>
+        .high-contrast {
+            background-color: black;
+            color: white;
+        }
+        .inv-contrast {
+            filter: invert(1);
+        }
+        .dys-font {
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+        }
+        .replace-img {
+            display: none;
+        }
+        .replace-style {
+            background-color: lightgray;
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div data-accessconfig-params='{"Prefix":"ac"}'></div>
+    
+    <h1>Test AccessConfig</h1>
+    <p>Ceci est un texte de test pour vérifier le fonctionnement d'AccessConfig.</p>
+    <img src="img/test-image.svg" alt="Image de test" class="replace-img">
+    
+    <script>
+        // Simuler le chargement de la page
+        window.onload = function() {
+            // Initialiser AccessConfig
+            AccessConfig.onload();
+            
+            // Simuler un changement de préférence
+            setTimeout(function() {
+                // Changer le contraste
+                var contrastRadio = document.querySelector('input[name="ac-contrast"][value="high-contrast"]');
+                if (contrastRadio) {
+                    contrastRadio.click();
+                }
+                
+                // Changer la police
+                var fontRadio = document.querySelector('input[name="ac-text-size"][value="dys-font"]');
+                if (fontRadio) {
+                    fontRadio.click();
+                }
+                
+                // Changer le remplacement d'images
+                var imgRadio = document.querySelector('input[name="ac-image"][value="replace-img"]');
+                if (imgRadio) {
+                    imgRadio.click();
+                }
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
